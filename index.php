@@ -16,7 +16,7 @@
     </p>
     <p>
         <h3>Dia 26/08/2020(atividade em grupo): </h3>
-        <a href="20200826_AJAXJQUERY"> Atividade conjunta de Ajax com Jquery
+        <a href="20200826/index.php"> Atividade conjunta de Ajax com Jquery
     </p>
 </body>
 </html>
