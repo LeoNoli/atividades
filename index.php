@@ -15,8 +15,12 @@
         <a href="20200819/index.php">Engenharia Reversa</a>
     </p>
     <p>
-        <h3>Dia 26/08/2020(atividade em grupo): </h3>
+        <h3>Dia 26/08/2020(atividade individual): </h3>
         <a href="20200826/index.php"> Atividade conjunta de Ajax com Jquery
+    </p>
+    <p>
+        <h3>Dia 26/08/2020(atividade em grupo): </h3>
+        <a href="AJAXJQUERY/index.php"> Atividade conjunta de Ajax com Jquery
     </p>
 </body>
 </html>
