@@ -22,5 +22,9 @@
         <h3>Dia 26/08/2020(atividade em grupo): </h3>
         <a href="AJAXJQUERY/index.php"> Atividade conjunta de Ajax com Jquery
     </p>
+     <p>
+        <h3>Trabalho em dupla (Christian Galho e José Leonardo) </h3>
+        <a href="trabalho/grupob.php"> Atividade conjunta Jose Leonardo e Christian Galho
+    </p>
 </body>
 </html>
