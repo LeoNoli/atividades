@@ -26,5 +26,9 @@
         <h3>Trabalho em dupla (Christian Galho e José Leonardo) </h3>
         <a href="trabalho/grupob.php"> Atividade conjunta Jose Leonardo e Christian Galho
     </p>
+     <p>
+        <h3>Trabalho em grupo (23/09/2020) </h3>
+        <a href="20200923/conexao.php"> Atividade conjunta PHP MySQL
+    </p>
 </body>
 </html>
