@@ -30,5 +30,13 @@
         <h3>Trabalho em grupo (23/09/2020) </h3>
         <a href="20200923/conexao.php"> Atividade conjunta PHP MySQL
     </p>
+    <p>
+        <h3>Dia 30/09/2020(atividade em grupo): </h3>
+        <a href="2020.09.30/index.php"> Atividade conjunta
+    </p>
+    <p>
+        <h3>Dia 14/10/2020(atividade em grupo): </h3>
+        <a href="2020.10.14/conexao.php"> Atividade conjunta
+    </p>
 </body>
 </html>
