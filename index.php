@@ -38,5 +38,9 @@
         <h3>Dia 14/10/2020(atividade em grupo): </h3>
         <a href="2020.10.14/conexao.php"> Atividade conjunta
     </p>
+    <p>
+        <h3>Trabalho em dupla 2ºBM (Ana Julia e José Leonardo) </h3>
+        <a href="Ana_Leo_Projeto2bim/index.php"> Atividade conjunta Ana Julia e José Leonardo
+    </p>
 </body>
 </html>
