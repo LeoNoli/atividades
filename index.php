@@ -48,7 +48,7 @@
     </p>
     <p>
         <h3>Revisão 3ºBimestre - Ana Julia e José Leonardo Parte 2</h3>
-        <a href="revisao_AnaJ_JoseLeo3Bmpart2/index.php">Revisão 3º Bimestre AnaJ e Joseleo Parte 2
+        <a href="revisao3Bm_partedois/index.php">Revisão 3º Bimestre AnaJ e Joseleo Parte 2
     </p>
 </body>
 </html>
