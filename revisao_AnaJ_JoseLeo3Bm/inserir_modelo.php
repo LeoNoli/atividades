@@ -22,8 +22,8 @@
                                         '$modelo',
                                         '$cor'
                                     )";
-        mysqli_query($con, $insert)
-        or die(mysqli_error($con));
+        mysqli_query($conexao, $insert)
+        or die(mysqli_error($conexao));
         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Música inserida com sucesso!</strong>
     <a href="form_modelo.php"> Clique para cadastrar outro modelo</a>

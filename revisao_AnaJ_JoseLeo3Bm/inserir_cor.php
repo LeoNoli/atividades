@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Cor</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
 </head>
 <body> 
 <?php 
     include "conexao.php";
+    
     $instrumento = $_POST["instrumento"];
     $cor = $_POST["cor"];
     $insert = "INSERT INTO cor(
@@ -19,8 +18,8 @@
                                     '$cor',
                                     '$instrumento'
                                 )";
-    mysqli_query($con, $insert)
-     or die(mysqli_error($con));
+    mysqli_query($conexao, $insert)
+     or die(mysqli_error($conexao));
      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
      <strong>Cor cadastrada com sucesso!</strong>
      <a href="form_cor.php"> Clique para cadastrar outra cor</a>
@@ -29,6 +28,6 @@
      </button>
    </div>';
  ?>
- <script src="bootstrap.min.js"></script>
+ 
  </body>
  </html>

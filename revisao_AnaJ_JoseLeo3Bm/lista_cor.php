@@ -2,12 +2,14 @@
     include "conexao.php";
 
     $select_instrumento = "SELECT nome, id_instrumento FROM instrumento";
-    $resultado_instrumento = mysqli_query($con,$select_instrumento);
+    $resultado_instrumento = mysqli_query($conexao,$select_instrumento);
 ?>
 <?php
 include "conf.php";
 
 cabecalho();
+
+include "script_remover_cor.php";
 
 echo '<div class="login-form col-xs-1 offset-xs-1
 col-sm-2 offset-sm-5 col-md-2 offset-md-5">
@@ -45,7 +47,15 @@ col-sm-2 offset-sm-5 col-md-2 offset-md-5">
 </div>            
 </form>';
 
-
+echo "
+    <h3>Cores</h3>
+    <div id='msg'></div>
+    <table>
+        <tr>
+            <th>Cor</th>
+            <th>Instrumento</th>
+            <th>Ação</th>
+        </tr>";
 
 $select = "SELECT cor.nome as cor, instrumento.nome as instrumento FROM cor INNER JOIN instrumento ON cor.cod_instrumento = instrumento.id_instrumento";
 
@@ -63,12 +73,17 @@ if(!empty($_POST)){
     }
 }
 
-$res=mysqli_query($con, $select) or die($select);
+$res=mysqli_query($conexao, $select) or die($select);
 while($linha=mysqli_fetch_assoc($res)){
-    echo "<ul>";
-    echo"<li>".$linha["cor"]. "-".$linha["instrumento"]."</li>";
-    echo "</ul>";
+    echo "<tr>
+            <td>".$linha["cor"]."</td>
+            <td>".$linha["instrumento"]."</td>
+            <td>
+                <button class='btn btn-danger remover' value='".$linha["cor"]."'>Remover</button>                       
+            </td>
+    </tr>";
 }
+echo "</table>";
 
 rodape();
 

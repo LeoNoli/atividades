@@ -2,7 +2,7 @@
     include "conexao.php";
 
     $select_instrumento = "SELECT nome, id_instrumento FROM instrumento";
-    $resultado_instrumento = mysqli_query($con,$select_instrumento);
+    $resultado_instrumento = mysqli_query($conexao,$select_instrumento);
 
 ?>
 <!DOCTYPE html>
@@ -33,6 +33,8 @@
 include "conf.php";
 
 cabecalho();
+
+include "script_remover_modelo.php";
 
 echo '<div class="login-form col-xs-1 offset-xs-1
 col-sm-2 offset-sm-5 col-md-2 offset-md-5">
@@ -79,6 +81,17 @@ col-sm-2 offset-sm-5 col-md-2 offset-md-5">
 </div>            
 </form>';
 
+echo "
+    <h3>Modelos</h3>
+    <div id='msg'></div>
+    <table>
+        <tr>
+            <th>Modelo</th>
+            <th>Cor</th>
+            <th>Instrumento</th>
+            <th>Ação</th>
+        </tr>";
+
 include "conexao.php";
 
 $select="SELECT modelo.nome as nome_modelo, cor.nome as nome_cor, instrumento.nome as nome_instrumento, instrumento.id_instrumento as id_instrumento, cor.id_cor as id_cor 
@@ -107,12 +120,18 @@ if(!empty($_POST)){
 }
 
 
-$res=mysqli_query($con, $select) or die($select);
+$res=mysqli_query($conexao, $select) or die($select);
 while($linha=mysqli_fetch_assoc($res)){
-    echo "<ul>";
-    echo"<li>".$linha["nome_modelo"]. "-" .$linha["nome_cor"]. "-".$linha["nome_instrumento"]."</li>";
-    echo "</ul>";
+    echo "<tr>
+            <td>".$linha["nome_modelo"]."</td>
+            <td>" .$linha["nome_cor"]."</td>
+            <td>".$linha["nome_instrumento"]."</td>
+            <td>
+                <button class='btn btn-danger remover' value='".$linha["nome_modelo"]."'>Remover</button>                       
+            </td>
+    </tr>";
 }
+echo "</table>";
 
 rodape();
 

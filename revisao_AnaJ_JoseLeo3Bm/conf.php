@@ -1,4 +1,6 @@
 <?php
+    include "conexao.php";
+
     $alt = "Descrição da imagem";
     $desenvolvedor = "Ana Julia & José Leonardo";
     $menu = array(

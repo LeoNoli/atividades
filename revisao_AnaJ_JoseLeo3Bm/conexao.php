@@ -1,8 +1,13 @@
 <?php
-    $host="localhost";
-    $user="root";
-    $password="usbw";
-    $bd="instrumentosmusicais";
-    $con=mysqli_connect($host, $user, $password, $bd)
-            or die("Erro ao conectar.");
+
+
+$host = "localhost";
+$db = "instrumentosmusicais";
+$user = "root";
+$senha = "usbw";
+
+$conexao = @mysqli_connect($host,$user,$senha,$db) 
+    or die("Erro ao abrir a conexão com o banco de dados.");
+
+
 ?>

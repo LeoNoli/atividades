@@ -4,7 +4,7 @@
 
     $select="SELECT id_instrumento, nome FROM instrumento";
 
-    $res = mysqli_query($con, $select) or die(mysqli_error($con));
+    $res = mysqli_query($conexao, $select) or die(mysqli_error($conexao));
     while($linha=mysqli_fetch_assoc($res)){
         $resultado[]= $linha;
     }
