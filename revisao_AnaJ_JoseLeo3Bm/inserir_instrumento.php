@@ -11,11 +11,17 @@
 <?php 
     include "conexao.php";
     $instrumento = $_POST["instrumento"];
+    $cor = $_POST["cor"];
+    $modelo = $_POST["modelo"];
     
     $insert = "INSERT INTO instrumento(
-                                    nome 
+                                    nome,
+                                    cod_cor,
+                                    cod_modelo
                                 ) VALUES (
-                                    '$instrumento'
+                                    '$instrumento',
+                                    '$cor',
+                                    '$modelo'
                                 )";
     mysqli_query($conexao, $insert)
      or die(mysqli_error($conexao));

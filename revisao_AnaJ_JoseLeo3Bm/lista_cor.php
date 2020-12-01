@@ -1,9 +1,4 @@
-<?php
-    include "conexao.php";
 
-    $select_instrumento = "SELECT nome, id_instrumento FROM instrumento";
-    $resultado_instrumento = mysqli_query($conexao,$select_instrumento);
-?>
 <?php
 include "conf.php";
 
@@ -20,20 +15,6 @@ col-sm-2 offset-sm-5 col-md-2 offset-md-5">
         <h2 class="text-center"><b>Lista de Cores Cadastradas</b></h2>
     </header>
     <form method="post">
-        <div class="form-group">
-            <div class="input-group" >
-                <select class="custom-select mr-sm-2" name="instrumento" class="text-center">
-                    <option selected>Instrumento Musical...</option>';
-?>
-                    <?php
-                        while($row_instrumento = mysqli_fetch_assoc($resultado_instrumento)){
-                            echo '<option value='.$row_instrumento["nome"].'> '.$row_instrumento["nome"].'</option>';
-                        }
-                    ?>
-<?php
-                echo '</select>
-            </div>
-        </div>
         <div class="form-group">
             <div class="input-group" >
                 <input type="text" name="cor" placeholder="Cor do Instrumento">
@@ -53,38 +34,45 @@ echo "
     <table>
         <tr>
             <th>Cor</th>
-            <th>Instrumento</th>
             <th>Ação</th>
         </tr>";
 
-$select = "SELECT cor.nome as cor, instrumento.nome as instrumento FROM cor INNER JOIN instrumento ON cor.cod_instrumento = instrumento.id_instrumento";
+//$select = "SELECT cor.nome as cor, instrumento.nome as instrumento FROM cor INNER JOIN instrumento ON cor.cod_instrumento = instrumento.id_instrumento";
 
+echo "<tbody id='tbody_cor'>";
+$select = "SELECT * FROM cor";
 if(!empty($_POST)){
     $select .= " WHERE (1=1) ";
         
     if($_POST["cor"]!=""){
         $nome = $_POST["cor"];
-        $select .= " AND cor.nome like '%$nome%' ";
-    }
-
-    if($_POST["instrumento"]!=""){
-        $instrumento = $_POST["instrumento"];
-        $select .= " AND instrumento.nome like '%$instrumento%' ";
+        $select .= " AND cor like '%$nome%' ";
     }
 }
 
 $res=mysqli_query($conexao, $select) or die($select);
+$i=0;
 while($linha=mysqli_fetch_assoc($res)){
     echo "<tr>
-            <td>".$linha["cor"]."</td>
-            <td>".$linha["instrumento"]."</td>
+            <td>".$linha["nome"]."</td>
             <td>
-                <button class='btn btn-danger remover' value='".$linha["cor"]."'>Remover</button>                       
+                <button class='btn btn-warning alterar' value='".$linha["nome"]."' data-toggle='modal' 
+                    data-target='#modal'>Alterar</button> 
+                <button class='btn btn-danger remover' value='".$linha["nome"]."'>Remover</button>                       
             </td>
     </tr>";
+    $i++;
+}
+if($i==0){
+    echo "<tr><td colspan='6'>Não há cores cadastradas</td></tr>";
 }
 echo "</table>";
 
+$titulo = "Alterar Cor";
+$nome_form = "alterar_cor.php";
+include "modal.php";
+
+include "scripts_cor.php";
 rodape();
 
 ?>

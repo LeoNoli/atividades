@@ -1,35 +1,4 @@
 <?php
-    include "conexao.php";
-
-    $select_instrumento = "SELECT nome, id_instrumento FROM instrumento";
-    $resultado_instrumento = mysqli_query($conexao,$select_instrumento);
-
-?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Lista Modelo</title>
-        <script src="js/jquery-3.5.1.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                $("select[name='instrumento']").change(function(){
-                    instrumento = $("select[name='instrumento']").val();
-                    
-                    text = "<select name='select_cor' id='select_cor'><option value=''>Selecione uma Cor...</option>";
-                    $("select[name='select_cor']" ).prop( "disabled", false );
-                        $.post("seleciona_cor.php",{'instrumento':instrumento},function(resultado){                   
-                            $.each(resultado, function(i, v){
-                                text += '<option value = "'+v.id_cor+'"> '+v.nome+' </option>';
-
-                                $("#cor").html(text);
-                            });                                             
-                        });
-                });
-            });
-        </script>
-        </head>
-<?php
 include "conf.php";
 
 cabecalho();
@@ -45,29 +14,6 @@ col-sm-2 offset-sm-5 col-md-2 offset-md-5">
         <h2 class="text-center"><b>Lista de Modelos Cadastrados</b></h2>
     </header>
     <form method="post">
-        <div class="form-group">
-            <div class="input-group" >
-                <select class="custom-select mr-sm-2" name="instrumento" class="text-center">
-                    <option selected>Instrumento Musical...</option>';
-?>
-                    <?php
-                        while($row_instrumento = mysqli_fetch_assoc($resultado_instrumento)){
-                            echo '<option value='.$row_instrumento["id_instrumento"].'> '.$row_instrumento["nome"].'</option>';
-                        }
-                    ?>
-<?php
-                echo'</select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group" >
-                <div id="cor">
-                    <select class="custom-select mr-sm-2" name="select_cor" id="select_cor" class="text-center">
-                        <option selected>Selecione uma Cor...</option>
-                    </select>
-                </div>
-            </div>
-        </div>
         <div class="form-group">
             <div class="input-group" >
                 <input type="text" name="modelo" placeholder="Nome do modelo...">
@@ -87,52 +33,45 @@ echo "
     <table>
         <tr>
             <th>Modelo</th>
-            <th>Cor</th>
-            <th>Instrumento</th>
             <th>Ação</th>
         </tr>";
 
 include "conexao.php";
 
-$select="SELECT modelo.nome as nome_modelo, cor.nome as nome_cor, instrumento.nome as nome_instrumento, instrumento.id_instrumento as id_instrumento, cor.id_cor as id_cor 
-FROM modelo INNER JOIN cor ON modelo.cod_cor = cor.id_cor 
-INNER JOIN instrumento ON cor.cod_instrumento = instrumento.id_instrumento";
+$select="SELECT * FROM modelo";
 
-if(!empty($_POST)){
-    if($_POST["instrumento"]!=""){
-        if(isset($_POST["select_cor"]) && $_POST["select_cor"]!=""){
-            $select_cor = $_POST["select_cor"];
-
-            $select .= " AND cor.id_cor = '$select_cor'";
-        }else{
-            $instrumento = $_POST["instrumento"];
-
-            $select .= " AND instrumento.id_instrumento = '$instrumento'";       
-
-        }   
-    }
-    
+if(!empty($_POST)){  
     if($_POST["modelo"]!=""){
         $nome_modelo = $_POST["modelo"];
         
-        $select .= " WHERE modelo.nome like '%$nome_modelo%'";
+        $select .= " WHERE modelo.nome like '%$nome%'";
     } 
 }
 
-
+echo "<tbody id='tbody_modelo'>";
 $res=mysqli_query($conexao, $select) or die($select);
+$i=0;
 while($linha=mysqli_fetch_assoc($res)){
     echo "<tr>
-            <td>".$linha["nome_modelo"]."</td>
-            <td>" .$linha["nome_cor"]."</td>
-            <td>".$linha["nome_instrumento"]."</td>
+            <td>".$linha["nome"]."</td>
             <td>
-                <button class='btn btn-danger remover' value='".$linha["nome_modelo"]."'>Remover</button>                       
+                <button class='btn btn-warning alterar' value='".$linha["nome"]."' data-toggle='modal' 
+                    data-target='#modal'>Alterar</button>
+                <button class='btn btn-danger remover' value='".$linha["nome"]."'>Remover</button>                       
             </td>
     </tr>";
+    $i++;
+}
+if($i==0){
+    echo "<tr><td colspan='6'>Não há modelos cadastrados</td></tr>";
 }
 echo "</table>";
 
+$titulo = "Alterar Modelo";
+$nome_form = "alterar_modelo.php";
+include "modal.php";
+
+include "scripts_modelo.php";
 rodape();
 
 ?>

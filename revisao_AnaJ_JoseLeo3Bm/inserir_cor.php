@@ -9,14 +9,12 @@
 <?php 
     include "conexao.php";
     
-    $instrumento = $_POST["instrumento"];
+    
     $cor = $_POST["cor"];
     $insert = "INSERT INTO cor(
-                                    nome, 
-                                    cod_instrumento
+                                    nome
                                 ) VALUES (
-                                    '$cor',
-                                    '$instrumento'
+                                    '$cor'
                                 )";
     mysqli_query($conexao, $insert)
      or die(mysqli_error($conexao));

@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/jquery-3.5.1.min.js"></script>
 
-        <script>
-            $(document).ready(function(){
-                $("#cor").keyup(function(){
-                    //PHP pra buscar
-                    $.post("seleciona_instrumento.php", function(g){
-                        option="<option label='Instrumento Musical' />";
-                        $.each(g, function(indice, valor){
-                            option+="<option value='"+valor.id_instrumento+"'> "+valor.nome+" </option>";
-                        });
-                        $("#instrumento").html(option);
-                    });
-                });
-            });
-        </script>
-
-    <title>Cadastro cor</title>
-</head>
-<body>
 <?php
 include "conf.php";
 
@@ -41,13 +17,6 @@ if(empty($_POST))
                 <div class="input-group">
                     <input type="text" name="cor" id="cor" placeholder="Cor do instrumento...">
                  </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <select name="instrumento" id="instrumento">
-                            <option label="Instrumento Musical" />
-                        </select>
-                    </div>
                 </div>
             
 				<div class="float-left">

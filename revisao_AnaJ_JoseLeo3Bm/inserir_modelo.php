@@ -12,20 +12,16 @@
    
     include "conexao.php";
     $modelo = $_POST["modelo"];
-    $cor = $_POST["cor"];
-    $instrumento = $_POST["instrumento"];
    
         $insert = "INSERT INTO modelo(
-                                       nome,
-                                       cod_cor
+                                       nome                                   
                                     ) VALUES (
-                                        '$modelo',
-                                        '$cor'
+                                        '$modelo'
                                     )";
         mysqli_query($conexao, $insert)
         or die(mysqli_error($conexao));
         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Música inserida com sucesso!</strong>
+    <strong>Modelo inserida com sucesso!</strong>
     <a href="form_modelo.php"> Clique para cadastrar outro modelo</a>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>

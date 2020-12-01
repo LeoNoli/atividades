@@ -4,10 +4,9 @@
     $alt = "Descrição da imagem";
     $desenvolvedor = "Ana Julia & José Leonardo";
     $menu = array(
-                    "instrumento"=>"Instrumentos",
+                    "modelo"=>"Modelo do instrumento",            
                     "cor"=>"Cor do instrumento",
-                    //...coloque os links com os seus textos.
-                    "modelo"=>"Modelo do instrumento"
+                    "instrumento"=>"Instrumentos"
                 );
 
     include "cabecalho.php";
