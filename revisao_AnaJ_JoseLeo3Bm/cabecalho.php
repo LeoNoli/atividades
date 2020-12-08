@@ -1,6 +1,7 @@
 <?php
 
 function cabecalho(){
+    session_start();
     $alt = $GLOBALS["alt"];
     $menu = $GLOBALS["menu"];
     echo "<!DOCTYPE html>
@@ -30,8 +31,9 @@ function cabecalho(){
             </button>
 
             <div class='collapse navbar-collapse' id='menu'>
-                <ul class='navbar-nav'>
-                      <li role='presentation' class='dropdown'>
+                <ul class='navbar-nav'>";
+                if(isset($_SESSION["usuario"])){
+                echo"<li role='presentation' class='dropdown'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
                           Cadastrar <span class='caret'></span>
                         </a>
@@ -55,12 +57,39 @@ function cabecalho(){
                 }  
                 echo "
                         </ul>
+                    </li>
+                    <li>
+                        <ul class='navbar-nav'>
+                            <li role='presentation' >
+                                <a href='logout.php'>
+                                    LOGOUT (SAIR)
+                                </a>
+                            </li>
+                        </ul>
                     </li>";
+                }
+                else{
 
-            echo "</ul>  
+                echo"<li>
+                        <ul class='navbar-nav'>
+                            <li role='presentation' >
+                                <a href='#' data-toggle='modal'
+                                data-target='#modal_login'>
+                                    Login
+                                </a>
+                            </li>
+                        </ul>
+                        </li>";
+                }
+                echo"
+                </ul>
                     
             </div>        
         </nav>
         <main role='main' class='container'>";
+        if(isset($_GET["erro"])){
+            echo "<div id='erro'>Erro na autenticação</div>";
+        }
+        include "form_login.php";
 }
 ?>
