@@ -41,6 +41,11 @@ echo "
 
 echo "<tbody id='tbody_cor'>";
 $select = "SELECT * FROM cor";
+
+if($_SESSION["permissao"]=="3" || $_SESSION["permissao"]=="2"){
+    $select.= " WHERE cor='".$_SESSION["usuario"]."'";
+}
+
 if(!empty($_POST)){
     $select .= " WHERE (1=1) ";
         
@@ -56,9 +61,10 @@ while($linha=mysqli_fetch_assoc($res)){
     echo "<tr>
             <td>".$linha["nome"]."</td>
             <td>
-                <button class='btn btn-warning alterar' value='".$linha["nome"]."' data-toggle='modal' 
-                    data-target='#modal'>Alterar</button> 
-                <button class='btn btn-danger remover' value='".$linha["nome"]."'>Remover</button>                       
+                <button class='btn btn-warning alterar' value='".$linha["id_cor"]."' data-toggle='modal' 
+                    data-target='#modal'>Alterar</button>   
+                <button class='btn btn-danger remover' value='".$linha["id_cor"]."'>Remover</button>
+                                   
             </td>
     </tr>";
     $i++;

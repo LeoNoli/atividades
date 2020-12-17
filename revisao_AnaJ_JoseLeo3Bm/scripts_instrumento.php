@@ -21,7 +21,7 @@
         $(".remover").click(function(){
          
            i = $(this).val();
-           c = "nome";
+           c = "id_instrumento";
            t = "instrumento";
            p = {tabela: t, id:i, coluna:c}
            
@@ -30,6 +30,8 @@
             if(r=='1'){                
                 $("#msg").html("Instrumento removido com sucesso.");
                 $("button[value='"+ i +"']").closest("tr").remove();
+            }else{
+                $("#msg").html("Esse instrumento não pode ser removido. Pois ele já foi comprado");
             }
            });
        }); 

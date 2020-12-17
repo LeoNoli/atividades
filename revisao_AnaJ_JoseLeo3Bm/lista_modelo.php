@@ -40,6 +40,10 @@ include "conexao.php";
 
 $select="SELECT * FROM modelo";
 
+if($_SESSION["permissao"]=="3" || $_SESSION["permissao"]=="2"){
+    $select.= " WHERE modelo='".$_SESSION["usuario"]."'";
+}
+
 if(!empty($_POST)){  
     if($_POST["modelo"]!=""){
         $nome_modelo = $_POST["modelo"];
@@ -55,9 +59,9 @@ while($linha=mysqli_fetch_assoc($res)){
     echo "<tr>
             <td>".$linha["nome"]."</td>
             <td>
-                <button class='btn btn-warning alterar' value='".$linha["nome"]."' data-toggle='modal' 
+                <button class='btn btn-warning alterar' value='".$linha["id_modelo"]."' data-toggle='modal' 
                     data-target='#modal'>Alterar</button>
-                <button class='btn btn-danger remover' value='".$linha["nome"]."'>Remover</button>                       
+                <button class='btn btn-danger remover' value='".$linha["id_modelo"]."'>Remover</button>                    
             </td>
     </tr>";
     $i++;

@@ -1,0 +1,14 @@
+Convidado: (sem permissao - sem variavel de sessao)
+    - se cadastrar (como cliente)
+    - logar.
+
+Cliente:
+    (com permissao 2)
+    - Fazer compras.
+    - Visualizar as suas compras.
+    - Ver seus dados e altera-los.
+
+Admin:
+    (com permissao 1)
+    - Cadastrar (modelo, cor e instrumento).
+    - Visualizar seus cadastros e altera-los ou remove-los.   

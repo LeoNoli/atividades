@@ -9,7 +9,8 @@ function cabecalho(){
         <head>
             <meta charset='utf-8' />
             <script src='js/jquery-3.5.1.min.js'></script>
-            <script src='js/moment.js'></script>";
+            <script src='js/moment.js'></script>
+            <script src='js/validacao.js'></script>";
     echo '
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -33,44 +34,76 @@ function cabecalho(){
             <div class='collapse navbar-collapse' id='menu'>
                 <ul class='navbar-nav'>";
                 if(isset($_SESSION["usuario"])){
-                echo"<li role='presentation' class='dropdown'>
-                        <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
-                          Cadastrar <span class='caret'></span>
-                        </a>
-                        <ul class='dropdown-menu'>";                        
-                    foreach($menu as $i=>$l){
-                        echo "<li class='nav-item'>
-                                <a class='menu' href='form_$i.php'>$l</a>
-                            </li>";
-                    }  
-                    echo "</ul>
-                    </li>
+
+                if($_SESSION["permissao"]=="2"){
+                    echo "
                     <li role='presentation' class='dropdown'>
                     <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
                       Listar <span class='caret'></span>
                     </a>
-                    <ul class='dropdown-menu'>";                        
-                foreach($menu as $i=>$l){
-                    echo "<li class='nav-item'>
-                            <a class='menu' href='lista_$i.php'>$l</a>
-                        </li>";
-                }  
-                echo "
-                        </ul>
-                    </li>
-                    <li>
-                        <ul class='navbar-nav'>
-                            <li role='presentation' >
-                                <a href='logout.php'>
-                                    LOGOUT (SAIR)
-                                </a>
-                            </li>
-                        </ul>
+                    <ul class='dropdown-menu'>                      
+                        <li class='nav-item'>
+                            <a class='menu' href='lista_produtos.php'>Lista de produtos</a>
+                            <a class='menu' href='lista_compras.php'>Lista de compras</a>
+                            <a class='menu' href='lista_dados.php'>Meus Dados</a>
+
+                        </li>
+                    </ul>
                     </li>";
                 }
                 else{
+                    echo"<li role='presentation' class='dropdown'>
+                    <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+                      Cadastrar <span class='caret'></span>
+                    </a>
+                    <ul class='dropdown-menu'>";                        
+                foreach($menu as $i=>$l){
+                    echo "<li class='nav-item'>
+                            <a class='menu' href='form_$i.php'>$l</a>
+                        </li>";
+                }  
+                echo "</ul>
+                </li>
+                <li role='presentation' class='dropdown'>
+                <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+                  Listar <span class='caret'></span>
+                </a>
+                <ul class='dropdown-menu'>";                        
+                    foreach($menu as $i=>$l){
+                        echo "<li class='nav-item'>
+                                <a class='menu' href='lista_$i.php'>$l</a>
+                            </li>";
+                    }
+                    echo "</ul>";  
+                                         
+                }
+                echo "
+                        </li>
+                        <li>
+                            <ul class='navbar-nav'>
+                                <li role='presentation' >
+                                    <a href='logout.php'>
+                                        LOGOUT (SAIR)
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>";  
+            }    
+                
+                else{
 
-                echo"<li>
+                echo"
+                <li role='presentation' class='dropdown'>
+                        <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+                        CADASTRE-SE <span class='caret'></span>
+                        </a>
+                        <ul class='dropdown-menu'>                      
+                            <li class='nav-item'>
+                                <a class='menu' href='form_usuario.php'>Usuário</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <ul class='navbar-nav'>
                             <li role='presentation' >
                                 <a href='#' data-toggle='modal'

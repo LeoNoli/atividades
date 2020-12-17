@@ -13,15 +13,18 @@
     $instrumento = $_POST["instrumento"];
     $cor = $_POST["cor"];
     $modelo = $_POST["modelo"];
-    
+    $preco = $_POST["preco"];
+
     $insert = "INSERT INTO instrumento(
                                     nome,
                                     cod_cor,
-                                    cod_modelo
+                                    cod_modelo,
+                                    preco
                                 ) VALUES (
                                     '$instrumento',
                                     '$cor',
-                                    '$modelo'
+                                    '$modelo',
+                                    '$preco'
                                 )";
     mysqli_query($conexao, $insert)
      or die(mysqli_error($conexao));

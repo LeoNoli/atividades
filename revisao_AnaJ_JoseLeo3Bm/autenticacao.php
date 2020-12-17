@@ -6,7 +6,7 @@ session_start();
         $email = $_POST["email"];
         $senha = $_POST["senha"];
 
-        $sql = "SELECT id_usuario FROM usuario
+        $sql = "SELECT id_usuario, permissao, email FROM usuario
                     WHERE email='$email' AND senha='$senha'";
         
         $res = mysqli_query($conexao,$sql)
@@ -16,6 +16,8 @@ session_start();
 
             $l = mysqli_fetch_assoc($res);
             $_SESSION["usuario"]=$l["id_usuario"];
+            $_SESSION["permissao"]=$l["permissao"];
+            $_SESSION["email"]=$l["email"];
             header("location: index.php");
         }
         else{

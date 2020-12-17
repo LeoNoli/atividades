@@ -33,12 +33,14 @@
 <?php
 include "conf.php";
 
+
 cabecalho();
+
 
 include "script_remover_instrumento.php";
 
-echo '<div class="login-form col-xs-1 offset-xs-1
-col-sm-2 offset-sm-5 col-md-2 offset-md-5">
+echo '<div class="login-form col-xs-5 offset-xs-5
+col-sm-5 offset-sm-5 col-md-5 offset-md-5">
 <div class="form-row align-items-center">
     <div class="col-auto my-1">
     <header>
@@ -90,12 +92,13 @@ echo "
             <th>Nome do Instrumento</th>
             <th>Modelo</th>
             <th>Cor</th>
+            <th>Preço</th>
             <th>Ação</th>
         </tr>";
 
 include "conexao.php";
 
-$select="SELECT instrumento.nome AS instrumento, cor.nome AS nome_cor, modelo.nome AS nome_modelo, instrumento.id_instrumento AS id_instrumento
+$select="SELECT preco, instrumento.nome AS instrumento, cor.nome AS nome_cor, modelo.nome AS nome_modelo, instrumento.id_instrumento AS id_instrumento
 FROM instrumento
 INNER JOIN cor ON instrumento.cod_cor = cor.id_cor
 INNER JOIN modelo ON instrumento.cod_modelo = modelo.id_modelo";
@@ -128,10 +131,11 @@ while($linha=mysqli_fetch_assoc($res)){
             <td>".$linha["instrumento"]."</td>
             <td>".$linha["nome_modelo"]."</td>
             <td>".$linha["nome_cor"]."</td>
+            <td>".$linha["preco"]."</td>
             <td>
                 <button class='btn btn-warning alterar' value='".$linha["id_instrumento"]."' data-toggle='modal' 
-                    data-target='#modal'>Alterar</button>
-                <button class='btn btn-danger remover' value='".$linha["id_instrumento"]."'>Remover</button>                       
+                    data-target='#modal'>Alterar</button>   
+                <button class='btn btn-danger remover' value='".$linha["id_instrumento"]."'>Remover</button>                      
             </td>
     </tr>";
     $i++;

@@ -6,7 +6,7 @@
     $menu = array(
                     "modelo"=>"Modelo do instrumento",            
                     "cor"=>"Cor do instrumento",
-                    "instrumento"=>"Instrumentos"
+                    "instrumento"=>"Instrumentos",
                 );
 
     include "cabecalho.php";

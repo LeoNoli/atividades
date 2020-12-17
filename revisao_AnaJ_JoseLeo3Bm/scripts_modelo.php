@@ -19,15 +19,18 @@
         $(".remover").click(function(){
          
            i = $(this).val();
-           c = "modelo.nome";
+           c = "id_modelo";
            t = "modelo";
            p = {tabela: t, id:i, coluna:c}
            console.log(p);
            $.post("remover.php",p,function(r){
-               
+            console.log(r);
             if(r=='1'){                
                 $("#msg").html("Modelo removido com sucesso.");
                 $("button[value='"+ i +"']").closest("tr").remove();
+            }
+            else{
+                $("#msg").html("Este modelo não pode ser removido. Já existe um instrumento cadastrado para ele.");
             }
            });
        }); 
@@ -73,6 +76,7 @@
     });
 
 </script>
+
 
 
 

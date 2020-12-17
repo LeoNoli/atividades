@@ -70,6 +70,11 @@ if(empty($_POST))
                     </select>
                 </div>
             </div>
+            <div class="form-group">
+				<div class="input-group">
+                    <input type="text" name="preco" id="preco" placeholder="Preço do instrumento...">
+                </div>
+            </div>
 				<div class="float-left">
                     <button type="submit" class="btn btn-primary">Cadastrar Instrumento</button>
                 </div>

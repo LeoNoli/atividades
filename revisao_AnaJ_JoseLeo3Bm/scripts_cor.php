@@ -20,7 +20,7 @@
         $(".remover").click(function(){
          
            i = $(this).val();
-           c = "cor.nome";
+           c = "id_cor";
            t = "cor";
            p = {tabela: t, id:i, coluna:c}
            console.log(p);
@@ -29,6 +29,8 @@
             if(r=='1'){                
                 $("#msg").html("Cor removida com sucesso.");
                 $("button[value='"+ i +"']").closest("tr").remove();
+            }else{
+                $("#msg").html("Essa cor não pode ser removida. Já existe um instrumento cadastrado para ele.");
             }
            });
        }); 
