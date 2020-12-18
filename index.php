@@ -43,7 +43,7 @@
         <a href="Ana_Leo_Projeto2bim/index.php"> Atividade conjunta Ana Julia e José Leonardo
     </p>
     <p>
-        <h3>Revisão 3ºBimestre - Ana Julia e José Leonardo</h3>
+        <h3>Revisão 3ºBimestre - Ana Julia e José Leonardo.</h3>
         <a href="revisao_AnaJ_JoseLeo3Bm/index.php">Revisão 3º Bimestre AnaJ e Joseleo
     </p>
 </body>
